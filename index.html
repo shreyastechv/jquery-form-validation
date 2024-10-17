@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>JS Form Validation</title>
+		<link href="./css/styles.css" rel="stylesheet">
+	</head>
+
+	<body>
+		<!--<div class="bg"></div>-->
+		<div class="container">
+			<main>
+				<h1>JQuery Form Validator</h1>
+				<section>
+					<form class="input-form">
+						<label for="fullname">Full name: </label>
+						<input type="text" id="fullname" name="fullname" placeholder="Enter your name" autocomplete="name"><br>
+						<div class="error" id="error-fullname"></div>
+
+						<input type="radio" id="male" name="gender">
+						<label for="male">Male</label>
+						<input type="radio" id="female" name="gender">
+						<label for="male">Female</label><br>
+						<div class="error" id="error-gender"></div>
+
+						<label for="email">Email: </label>
+						<input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email"><br>
+						<div class="error" id="error-email"></div>
+
+						<label for="phone">Phone number: </label>
+						<input type="tel" id="phone" name="phone" placeholder="Enter your phone number" autocomplete="tel"><br>
+						<div class="error" id="error-phone"></div>
+
+						<label for="age">Age: </label>
+						<input type="number" id="age" name="age" placeholder="Enter your age" min="18" max="60"><br>
+						<div class="error" id="error-age"></div>
+
+						<label for="password">Password: </label>
+						<input type="password" id="password" name="password" placeholder="Enter your password"><br>
+						<div class="error" id="error-password"></div>
+
+						<label for="confirm-password">Confirm password: </label>
+						<input type="password" id="confirm-password" name="confirm-password" placeholder="Re-type password"><br>
+						<div class="error" id="error-confirm-password"></div>
+
+						<button type="button" onclick="validate()">Submit</button>
+					</form>
+				</section>
+			</main>
+		</div>
+		<script src="./js/script.js"></script>
+	</body>
+</html>
