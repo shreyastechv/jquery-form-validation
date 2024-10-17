@@ -117,7 +117,7 @@ function validate() {
 	}
 
 	// Confirm password validation
-	if(password !== confirmPassword) {
+	if(validatePassword(password) && password !== confirmPassword) {
 		errorConfirmPassword.text("Passwords must be the same");
 	}
 }
