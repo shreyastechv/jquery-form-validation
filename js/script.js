@@ -73,6 +73,7 @@ function validate() {
 	const confirmPassword = $("#confirm-password").val();
 	const date = new Date($("#date").val());
 	const website = $("#website").val();
+	const terms = $("input[name='terms']").is(":checked");
 
 	const errorFullname = $("#error-fullname");
 	const errorGender = $("#error-gender");
@@ -83,6 +84,7 @@ function validate() {
 	const errorConfirmPassword = $("#error-confirm-password");
 	const errorDate = $("#error-date");
 	const errorWebsite = $("#error-website");
+	const errorTerms = $("#error-terms");
 
 	errorFullname.text("");
 	errorGender.text("");
@@ -93,6 +95,7 @@ function validate() {
 	errorConfirmPassword.text("");
 	errorDate.text("");
 	errorWebsite.text("");
+	errorTerms.text("");
 
 	// Name validation
 	if(!validateFullname(fullname)) {
@@ -140,5 +143,10 @@ function validate() {
 	const urlPattern = /^(http:\/\/|https:\/\/)?(www\.)?[\w]+\.(com|org|net|io|us|uk|de|cn|xyz|site|online|co|be|fr|zip|ing)$/;
 	if(!urlPattern.test(website)) {
 		errorWebsite.text("Url is invalid");
+	}
+
+	// Checkbox validation
+	if(!terms) {
+		errorTerms.text("You need to accept the terms");
 	}
 }

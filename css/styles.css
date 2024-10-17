@@ -33,7 +33,7 @@ label {
 	font-weight: bold;
 }
 
-input:not([type="radio"]) {
+input:not([type="radio"]):not([type="checkbox"]) {
 	width: 200px;
 }
 
