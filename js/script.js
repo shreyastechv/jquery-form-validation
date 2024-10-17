@@ -71,6 +71,8 @@ function validate() {
 	const age = $("#age").val();
 	const password = $("#password").val();
 	const confirmPassword = $("#confirm-password").val();
+	const date = new Date($("#date").val());
+	console.log(date);
 
 	const errorFullname = $("#error-fullname");
 	const errorGender = $("#error-gender");
@@ -79,6 +81,7 @@ function validate() {
 	const errorAge = $("#error-age");
 	const errorPassword = $("#error-password");
 	const errorConfirmPassword = $("#error-confirm-password");
+	const errorDate = $("#error-date");
 
 	errorFullname.text("");
 	errorGender.text("");
@@ -87,6 +90,7 @@ function validate() {
 	errorAge.text("");
 	errorPassword.text("");
 	errorConfirmPassword.text("");
+	errorDate.text("");
 
 	// Name validation
 	if(!validateFullname(fullname)) {
@@ -120,5 +124,13 @@ function validate() {
 	}
 	else if(password !== confirmPassword) {
 		errorConfirmPassword.text("Passwords must be the same");
+	}
+
+	// Date validation
+	const year = date.getFullYear();
+	const month = date.getMonth()+1;
+	const day = date.getDate();
+	if((year<2006 || year>2025) || (year==2006 && (month<10 || (month==10 && day<17))) || (year==2025 && (month>10 || (month==10 && day>17)))) {
+		errorDate.text("Date must be between 2006-10-17 and 2025-10-17");
 	}
 }
