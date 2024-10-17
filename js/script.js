@@ -72,7 +72,7 @@ function validate() {
 	const password = $("#password").val();
 	const confirmPassword = $("#confirm-password").val();
 	const date = new Date($("#date").val());
-	console.log(date);
+	const website = $("#website").val();
 
 	const errorFullname = $("#error-fullname");
 	const errorGender = $("#error-gender");
@@ -82,6 +82,7 @@ function validate() {
 	const errorPassword = $("#error-password");
 	const errorConfirmPassword = $("#error-confirm-password");
 	const errorDate = $("#error-date");
+	const errorWebsite = $("#error-website");
 
 	errorFullname.text("");
 	errorGender.text("");
@@ -91,6 +92,7 @@ function validate() {
 	errorPassword.text("");
 	errorConfirmPassword.text("");
 	errorDate.text("");
+	errorWebsite.text("");
 
 	// Name validation
 	if(!validateFullname(fullname)) {
@@ -132,5 +134,11 @@ function validate() {
 	const day = date.getDate();
 	if((year<2006 || year>2025) || (year==2006 && (month<10 || (month==10 && day<17))) || (year==2025 && (month>10 || (month==10 && day>17)))) {
 		errorDate.text("Date must be between 2006-10-17 and 2025-10-17");
+	}
+
+	// Website url validation
+	const urlPattern = /^(http:\/\/|https:\/\/)?(www\.)?[\w]+\.(com|org|net|io|us|uk|de|cn|xyz|site|online|co|be|fr|zip|ing)$/;
+	if(!urlPattern.test(website)) {
+		errorWebsite.text("Url is invalid");
 	}
 }
