@@ -113,7 +113,7 @@ function validate() {
 
 	// Password validation
 	if(!validatePassword(password)) {
-		errorPassword.text("Password must contain the following: A lowercase letter, an uppercase letter, a number, minimum of 8 characters and a special character (@$!%*?&)");
+		errorPassword.html("Password must contain the following:<br>- a lowercase letter<br>- an uppercase letter<br>- a number<br>- minimum of 8 characters and a special character (@$!%*?&)");
 	}
 
 	// Confirm password validation
