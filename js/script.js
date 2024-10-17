@@ -33,32 +33,34 @@ function validatePhoneNum(phone) {
 }
 
 function validatePassword(password) {
+	let errorStr ="";
+
 	// Checking for length
 	if(password.length < 8) {
-		return false;
+		errorStr += "<br>- more than 8 characters";
 	}
 
 	// Checking for lowercase letters
 	if(password == password.toUpperCase()) {
-		return false;
+		errorStr += "<br>- a lowercase letter";
 	}
 
 	// Checking for uppercase letters
 	if(password == password.toLowerCase()) {
-		return false;
+		errorStr += "<br>- an uppercase letter";
 	}
 
 	// Checking for numbers
 	if(!/\d/.test(password)) {
-		return false;
+		errorStr += "<br>- one digit";
 	}
 
 	// Check for special characters
 	if(!/[@$!%*?&]/.test(password)) {
-		return false;
+		errorStr += "<br>- one special character (@$!%*?&)";
 	}
 
-	return true;
+	return errorStr;
 }
 
 function validate() {
@@ -112,12 +114,11 @@ function validate() {
 	}
 
 	// Password validation
-	if(!validatePassword(password)) {
-		errorPassword.html("Password must contain the following:<br>- a lowercase letter<br>- an uppercase letter<br>- a number<br>- minimum of 8 characters and a special character (@$!%*?&)");
+	const errorStr = validatePassword(password);
+	if(errorStr != "") {
+		errorPassword.html("Password must contain atleast the following:" + errorStr);
 	}
-
-	// Confirm password validation
-	if(validatePassword(password) && password !== confirmPassword) {
+	else if(password !== confirmPassword) {
 		errorConfirmPassword.text("Passwords must be the same");
 	}
 }
