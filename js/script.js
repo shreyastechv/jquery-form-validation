@@ -1,37 +1,3 @@
-function isStrEmpty(string) {
-	if(string.trim().length == 0) {
-		return true;
-	}
-	return false;
-}
-
-function validateFullname(fullname) {
-	if(isStrEmpty(fullname)) {
-		return false;
-	}
-
-	if(/\d/.test(fullname)) {
-		return false;
-	}
-
-	return true;
-}
-
-function validateEmail(email) {
-	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	if(!emailPattern.test(email)) {
-		return false;
-	}
-	return true;
-}
-
-function validatePhoneNum(phone) {
-	if(phone.length != 10) {
-		return false;
-	}
-	return true;
-}
-
 function validatePassword(password) {
 	let errorStr ="";
 
@@ -98,7 +64,7 @@ function validate() {
 	errorTerms.text("");
 
 	// Name validation
-	if(!validateFullname(fullname)) {
+	if(fullname == "" || /\d/.test(fullname)) {
 		errorFullname.text("Not a valid name");
 	}
 
@@ -108,13 +74,14 @@ function validate() {
 	}
 
 	// Email validation
-	if(!validateEmail(email)) {
+	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	if(!emailPattern.test(email)) {
 		errorEmail.text("Not a valid email address");
 	}
 
 	// Phone number validation
-	if(!validatePhoneNum(phone)) {
-		errorPhone.text("Not a valid phone number");
+	if(phone.length != 10) {
+		errorPhone.text("Not a valid phone number. Length must be 10.");
 	}
 
 	// Age validation
