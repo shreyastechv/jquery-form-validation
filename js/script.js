@@ -114,7 +114,6 @@ function validate() {
 	const year = date.getFullYear();
 	const month = date.getMonth()+1;
 	const day = date.getDate();
-	console.log(date);
 	if(date == "Invalid Date") {
 		errorDate.text("Date must be selected!");
 	}
