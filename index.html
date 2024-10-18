@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>JS Form Validation</title>
+		<link href="./css/styles.css" rel="stylesheet">
+		<script src="./js/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<div class="container">
+			<main>
+				<h1>JQuery Form Validator</h1>
+				<section>
+					<form class="input-form">
+						<label for="fullname">Full name: </label>
+						<input type="text" id="fullname" name="fullname" placeholder="Enter your name" autocomplete="name"><br>
+						<div class="error" id="error-fullname"></div>
+
+						<input type="radio" id="male" value="male" name="gender">
+						<label for="male">Male</label>
+						<input type="radio" id="female" value="female" name="gender">
+						<label for="male">Female</label><br>
+						<div class="error" id="error-gender"></div>
+
+						<label for="email">Email: </label>
+						<input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="email"><br>
+						<div class="error" id="error-email"></div>
+
+						<label for="phone">Phone number: </label>
+						<input type="tel" id="phone" name="phone" placeholder="Enter your phone number" autocomplete="tel"><br>
+						<div class="error" id="error-phone"></div>
+
+						<label for="age">Age: </label>
+						<input type="number" id="age" name="age" placeholder="Enter your age" min="18" max="60"><br>
+						<div class="error" id="error-age"></div>
+
+						<label for="password">Password: </label>
+						<input type="password" id="password" name="password" placeholder="Enter your password"><br>
+						<div class="error" id="error-password"></div>
+
+						<label for="confirm-password">Confirm password: </label>
+						<input type="password" id="confirm-password" name="confirm-password" placeholder="Re-type password"><br>
+						<div class="error" id="error-confirm-password"></div>
+
+						<label for="date">Date: </label>
+						<input type="date" id="date" name="date" value="2024-10-17" min="2006-10-17" max="2025-10-17"><br>
+						<div class="error" id="error-date"></div>
+
+						<label for="website">Website: </label>
+						<input type="url" id="website" name="website" placeholder="Enter your website url"><br>
+						<div class="error" id="error-website"></div>
+
+						<input type="checkbox" id="terms" name="terms" value="terms">
+						<label for="terms">Accept terms and conditions</label><br>
+						<div class="error" id="error-terms"></div>
+
+						<button type="button" onclick="validate()">Submit</button>
+					</form>
+				</section>
+			</main>
+		</div>
+		<script src="./js/script.js"></script>
+	</body>
+</html>
