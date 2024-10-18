@@ -64,8 +64,11 @@ function validate() {
 	errorTerms.text("");
 
 	// Name validation
-	if(fullname == "" || /\d/.test(fullname)) {
-		errorFullname.text("Not a valid name");
+	if(fullname == "") {
+		errorFullname.text("Name is required!");
+	}
+ 	else if (/\d/.test(fullname)) {
+		errorFullname.text("Not a valid name because it contains numbers.");
 	}
 
 	// Gender validation
@@ -75,8 +78,11 @@ function validate() {
 
 	// Email validation
 	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	if(!emailPattern.test(email)) {
-		errorEmail.text("Not a valid email address");
+	if(email == "") {
+		errorEmail.text("Email is required!");
+	}
+	else if(!emailPattern.test(email)) {
+		errorEmail.text("Not a valid email address. It must be in the form name@domain.extension");
 	}
 
 	// Phone number validation
@@ -85,13 +91,19 @@ function validate() {
 	}
 
 	// Age validation
-	if(age > 60 || age < 18) {
+	if(age == 0) {
+		errorAge.text("Age must be provided!");
+	}
+	else if(age > 60 || age < 18) {
 		errorAge.text("Age should be between 18 and 60");
 	}
 
 	// Password validation
 	const errorStr = validatePassword(password);
-	if(errorStr != "") {
+	if(password == "") {
+		errorPassword.text("Password is required!");
+	}
+	else if(errorStr != "") {
 		errorPassword.html("Password must contain atleast the following:" + errorStr);
 	}
 	else if(password !== confirmPassword) {
@@ -102,13 +114,20 @@ function validate() {
 	const year = date.getFullYear();
 	const month = date.getMonth()+1;
 	const day = date.getDate();
-	if((year<2006 || year>2025) || (year==2006 && (month<10 || (month==10 && day<17))) || (year==2025 && (month>10 || (month==10 && day>17)))) {
+	console.log(date);
+	if(date == "Invalid Date") {
+		errorDate.text("Date must be selected!");
+	}
+	else if((year<2006 || year>2025) || (year==2006 && (month<10 || (month==10 && day<17))) || (year==2025 && (month>10 || (month==10 && day>17)))) {
 		errorDate.text("Date must be between 2006-10-17 and 2025-10-17");
 	}
 
 	// Website url validation
 	const urlPattern = /^(http:\/\/|https:\/\/)?(www\.)?[\w]+\.(com|org|net|io|us|uk|de|cn|xyz|site|online|co|be|fr|zip|ing)$/;
-	if(!urlPattern.test(website)) {
+	if(website == "") {
+		errorWebsite.text("A url must be provided!");
+	}
+	else if(!urlPattern.test(website)) {
 		errorWebsite.text("Url is invalid");
 	}
 
